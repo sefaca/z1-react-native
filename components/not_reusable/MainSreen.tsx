@@ -1,22 +1,28 @@
-// Archivo: PantallaPrincipal.tsx
+// Archivo: MainScreen.tsx
 import React, {useState} from 'react';
-import { Image, View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { useQuery } from '@apollo/client'; // Importa useQuery
-import { GET_ITEMS } from '../queries/queries'; // Importa la consulta
+import {Image, View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {useQuery} from '@apollo/client'; // Importa useQuery
+import {GET_ITEMS} from '../queries/queries'; // Importa la consulta
 import HorizontalMenu from '../reusable/HorizontalMenu';
 import ItemList from '../reusable/ItemList';
-// import { Grid, Row, Col } from 'react-native-flexbox-grid';
 
-const typesOfElements = ['All', 'Favorites', 'Harm Reduction', 'Integration', 'Mindfulness', 'Tripping'];
+const typesOfElements = [
+  'All',
+  'Favorites',
+  'Harm Reduction',
+  'Integration',
+  'Mindfulness',
+  'Tripping',
+];
 
-function MainScreen() {
+function MainScreen({ navigation }) {
   const [filter, setFilter] = useState('All');
 
-  const handleFilterChange = (type) => {
+  const handleFilterChange = type => {
     setFilter(type);
   };
 
-  const { loading, error, data } = useQuery(GET_ITEMS);
+  const {loading, error, data} = useQuery(GET_ITEMS);
 
   if (loading) {
     // Muestra una pantalla de carga mientras se obtienen los datos
@@ -39,45 +45,56 @@ function MainScreen() {
   // Si llegamos aquí, los datos se han cargado correctamente
   const items = data.items;
 
-  const itemsPerRow = 2;
+  const imageUrls = [];
+  const imageCount = 40;
 
-  const imageUrls = [
-    'https://picsum.photos/640/360',
-    'https://placebeard.it/640x360',
-    'https://placekitten.com/640/360',
-    'https://baconmockup.com/640/360',
-    'https://placebear.com/640/360',
-  ];
+  for (let i = 0; i < imageCount; i++) {
+    // Genera URLs únicas utilizando IDs diferentes o dimensiones distintas
+    const imageUrl = `https://picsum.photos/id/${i}/200/300`; // Ejemplo con IDs diferentes
+    imageUrls.push(imageUrl);
+  }
 
-  const filteredItems = filter === 'All' ? items : items.filter(item => item.category.title === filter);
+  const filteredItems =
+    filter === 'All'
+      ? items
+      : items.filter(item => item.category.title === filter);
 
   return (
-    <ScrollView style={mainScreenStyles.container}>
-      <Text style={mainScreenStyles.title}>Learn</Text>
-      <HorizontalMenu
-        typesOfElements={typesOfElements}
-        filter={filter}
-        onFilterChange={handleFilterChange}
-      />
-      {filteredItems.map((item, index) => (
-        <ItemList
-          key={index} // Asegúrate de proporcionar una clave única
-          image={imageUrls[index % imageUrls.length]}
-          categoryTitle={item.category.title}
-          title={item.title}
-          author={item.author}
-          isStartOfRow={index % itemsPerRow === 0}
+    <View style={mainScreenStyles.container}>
+      <ScrollView>
+        <Text style={mainScreenStyles.title}>Learn</Text>
+        <HorizontalMenu
+          typesOfElements={typesOfElements}
+          filter={filter}
+          onFilterChange={handleFilterChange}
         />
-      ))}
-    </ScrollView>
+        {filteredItems.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                console.log(item); // Agrega esta línea para verificar el ítem
+                navigation.navigate('ItemDetail', { id: item.id })
+              }}
+            >
+            <ItemList
+              key={index}
+              image={imageUrls[index % imageUrls.length]}
+              categoryTitle={item.category.title}
+              title={item.title}
+              author={item.author}
+            />
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
   );
 }
 
 const mainScreenStyles = {
   container: {
-    // flex: 1,
+    flex: 1,
     // justifyContent: 'center',
-    // alignItems: 'center',
+    // alignItems: 'stretch',
     backgroundColor: '#2f054d',
     flexDirection: 'column',
   },

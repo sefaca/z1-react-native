@@ -10,25 +10,15 @@ interface HorizontalMenuProps {
 
 const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ typesOfElements, filter, onFilterChange }) => {
   return (
-    <ScrollView
-    horizontal
-    contentContainerStyle={styles.horizontalMenu}
-    >
+    <ScrollView horizontal contentContainerStyle={styles.horizontalMenu}>
       {typesOfElements.map((type) => (
         <TouchableOpacity
           key={type}
-          style={[
-            styles.button,
-            filter === type ? styles.activeButton : null,
-          ]}
+          style={[styles.button, filter === type ? styles.activeButton : null]}
           onPress={() => onFilterChange(type)}
         >
           <Text
-            style={[
-              styles.buttonText,
-              filter === type ? styles.activeButtonText : null,
-            ]}
-          >
+            style={[styles.buttonText, filter === type ? styles.activeButtonText : null]}>
             {type}
           </Text>
         </TouchableOpacity>

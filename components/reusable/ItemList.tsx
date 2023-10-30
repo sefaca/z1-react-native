@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
-const windowWidth = Dimensions.get('window').width;
+// const windowWidth = Dimensions.get('window').width;
 
 interface ItemProps {
   image: string;
@@ -14,8 +14,9 @@ interface ItemProps {
 const ItemList: React.FC<ItemProps> = ({ image, categoryTitle, title, author }) => {
   return (
     <View style={[styles.container]}>
-      <View style={styles.textContainer}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
+
+      <View style={styles.textContainer}>
         <Text style={styles.categoryTitle}>{categoryTitle}</Text>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.author}>{author}</Text>
@@ -26,7 +27,7 @@ const ItemList: React.FC<ItemProps> = ({ image, categoryTitle, title, author }) 
 
 const styles = StyleSheet.create({
   container: {
-    // flexDirection: 'column',
+    flexDirection: 'row',
     // flexWrap: 'wrap',
     // justifyContent: 'space-between',
     marginBottom: 10,
@@ -36,17 +37,19 @@ const styles = StyleSheet.create({
     width: '94%',
   },
   image: {
-    width: '100%',
-    // height: 100,
+    width: 120,
+    height: 120,
+    borderRadius: 10,
+    margin: 10,
     // marginRight: 10,
-    height: windowWidth * 0.5,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    // height: windowWidth * 0.5,
+    // borderTopLeftRadius: 15,
+    // borderTopRightRadius: 15,
     // resizeMode: 'cover',
   },
   textContainer: {
-    // flex: 1,
-    // padding: 10,
+    flex: 1,
+    padding: 5,
     flexDirection: 'column',
   },
   categoryTitle: {
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     // paddingBottom: 
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
     paddingLeft: 10,
