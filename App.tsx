@@ -1,15 +1,22 @@
 // Archivo: App.tsx
 import React from 'react';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainScreen from './components/not_reusable/MainSreen';
 import ItemDetailScreen from './components/reusable/ItemDetailScreen';
 import TestScreen from './components/reusable/TestScreen';
 
-const Stack = createStackNavigator();
+const client = new ApolloClient({
+  uri: 'https://tech.z1.digital/graphql', // URL del servidor GraphQL
+  cache: new InMemoryCache(),
+});
 
-function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
+   <ApolloProvider client={client}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -18,9 +25,9 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
-        <Stack.Screen name="TestScreen" component={TestScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+   </ApolloProvider>
   );
 }
 
