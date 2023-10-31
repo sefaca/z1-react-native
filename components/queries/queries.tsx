@@ -1,4 +1,4 @@
-// Archivo: queries.js
+// Archivo: queries.tsx
 
 import { gql } from '@apollo/client';
 

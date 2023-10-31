@@ -1,7 +1,6 @@
 // Archivo: HorizontalMenu.tsx
 import React from 'react';
 import { ScrollView, View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-
 interface HorizontalMenuProps {
   typesOfElements: string[];
   filter: string;
@@ -17,16 +16,17 @@ const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ typesOfElements, filter
           style={[styles.button, filter === type ? styles.activeButton : null]}
           onPress={() => onFilterChange(type)}
         >
-          <Text
-            style={[styles.buttonText, filter === type ? styles.activeButtonText : null]}>
-            {type}
-          </Text>
+        <Text
+          style={[styles.buttonText, filter === type ? styles.activeButtonText : null]}>
+          {type}
+        </Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
   );
 };
 
+// Estilos
 const styles = StyleSheet.create({
   horizontalMenu: {
     flexDirection: 'row',

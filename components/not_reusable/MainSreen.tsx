@@ -50,7 +50,7 @@ function MainScreen({ navigation }) {
 
   for (let i = 0; i < imageCount; i++) {
     // Genera URLs únicas utilizando IDs diferentes o dimensiones distintas
-    const imageUrl = `https://picsum.photos/id/${i}/200/300`; // Ejemplo con IDs diferentes
+    const imageUrl = `https://picsum.photos/id/${i}/200/300`; 
     imageUrls.push(imageUrl);
   }
 
@@ -63,38 +63,37 @@ function MainScreen({ navigation }) {
     <View style={mainScreenStyles.container}>
       <ScrollView>
         <Text style={mainScreenStyles.title}>Learn</Text>
-        <HorizontalMenu
-          typesOfElements={typesOfElements}
-          filter={filter}
-          onFilterChange={handleFilterChange}
-        />
-        {filteredItems.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => {
-                console.log(item); // Agrega esta línea para verificar el ítem
-                navigation.navigate('ItemDetail', { id: item.id })
-              }}
-            >
-            <ItemList
-              key={index}
-              image={imageUrls[index % imageUrls.length]}
-              categoryTitle={item.category.title}
-              title={item.title}
-              author={item.author}
-            />
-          </TouchableOpacity>
-        ))}
+          <HorizontalMenu
+            typesOfElements={typesOfElements}
+            filter={filter}
+            onFilterChange={handleFilterChange}
+          />
+            {filteredItems.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => {
+                  console.log(item); // He agregado el console.log para verificar que me estaba devolviendo los datos de la api sin que me funcione la navegación de pantalla
+                  navigation.navigate('ItemDetail', { id: item.id })
+                }}
+              >
+              <ItemList
+                key={index}
+                image={imageUrls[index % imageUrls.length]}
+                categoryTitle={item.category.title}
+                title={item.title}
+                author={item.author}
+              />
+              </TouchableOpacity>
+            ))}
       </ScrollView>
     </View>
   );
 }
 
+// Estilos
 const mainScreenStyles = {
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'stretch',
     backgroundColor: '#2f054d',
     flexDirection: 'column',
   },

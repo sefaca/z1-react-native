@@ -1,12 +1,11 @@
+// Archivo: ItemDetailScreen.tsx
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-
 
 const ItemDetailScreen = ({ route }) => {
   const { item } = route.params;
 
   return (
-    // <ScrollView>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         {item && (
         <>
@@ -18,7 +17,6 @@ const ItemDetailScreen = ({ route }) => {
         </>
         )}
       </View>
-    // </ScrollView>
   );
 };
 
