@@ -14,7 +14,7 @@ const ItemDetailScreen = ({ route }) => {
       headerStyle: { backgroundColor: '#2f054d'},
       headerTitleStyle: { marginLeft: 20 },
       headerTintColor: 'white',
-      headerTitle: '', // Esto eliminará el título del encabezado
+      headerTitle: '',
       headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={{ color: 'white', marginLeft: 2, fontSize: 25 }}>X</Text>
@@ -36,6 +36,7 @@ const ItemDetailScreen = ({ route }) => {
   );
 };
 
+// Estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 22,
     paddingRight: 22,
-    color: "white"
+    color: 'white'
   },
   author: {
     fontSize: 15,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     paddingLeft: 22,
     paddingRight: 22,
     paddingBottom: 35,
-    color: "white",
+    color: 'white',
   }
 });
 
