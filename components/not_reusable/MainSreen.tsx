@@ -75,7 +75,13 @@ function MainScreen({navigation}) {
             key={index}
             onPress={() => {
               console.log(item);
-              navigation.navigate('ItemDetail', {id: item.id});
+              navigation.navigate('ItemDetail', { 
+                categoryTitle: item.category.title,
+                title: item.title,
+                author: item.author,
+                image: `https://picsum.photos/id/${index}/200/300`,
+                content: item.content,
+              });
             }}>
             <ItemList
               key={index}

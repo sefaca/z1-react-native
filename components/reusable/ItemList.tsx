@@ -13,7 +13,6 @@ const ItemList: React.FC<ItemProps> = ({ image, categoryTitle, title, author }) 
   return (
     <View style={[styles.container]}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
-
       <View style={styles.textContainer}>
         <Text style={styles.categoryTitle}>{categoryTitle}</Text>
         <Text style={styles.title}>{title}</Text>

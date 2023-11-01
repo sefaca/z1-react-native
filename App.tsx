@@ -24,7 +24,9 @@ const App = () => {
           component={MainScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
+        <Stack.Screen 
+          name="ItemDetail" 
+          component={ItemDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
    </ApolloProvider>
