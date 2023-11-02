@@ -1,4 +1,20 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ReactNative: Unleashing the Z1 Test
+
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli). It's a technical test created by Sergio Falcón for the z1 team.
+
+# Index
+
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Evolution of the Project](#evolution-of-the-project)
+- [Learning and Development](#learning-and-development)
+- [Device Demonstration](#device-demonstration)
+- [Learn More](#learn-more)
+
+# Introduction
+
+This project is aimed at showcasing React Native development skills while integrating various features as per the test requirements. It is structured to demonstrate proficiency in React Native development and API integration.
 
 # Getting Started
 
@@ -55,18 +71,52 @@ Now that you have successfully run the app, let's modify it.
 
    For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
 ### Now what?
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+# Project Structure
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+The project is organized around the following main folders and files:
+
+- **`android/`** y **`ios/`**: Folders containing configuration files and platform-specific resources for Android and iOS, respectively.
+- **`node_modules/`**: Contains the project's libraries and dependencies.
+- **`components/`**: The main folder where all the application source code resides.
+  - **`reusable/`**: It contains reusable application components.
+  - **`not_reusable/`**: Contains non-reusable components of the application.
+  - **`queries/`**: Files with the queries to obtain the necessary data from the API.
+- **`App.tsx`**: Application entry point.
+- **`index.js`**: Startup file that registers the application.
+
+The project follows a scalable and modular architecture, where each folder serves a specific purpose to facilitate maintenance and code extension.
+
+# Evolution of the Project
+
+This project has been developed progressively, following a step-by-step structure:
+
+1. **Main Screen Structure:** I designed the main screen including the title, the horizontal menu and configured the filters to present the elements in a clear and accessible way.
+
+2. **Data Query:** I configured and used a query to obtain the necessary data and display it on the main screen. This included managing data by applying filters through the menu.
+
+3. **Drop-down Details Window:** I developed a drop-down window that displays the details of the selected items. This screen was configured to display specific data for each selected item.
+
+4. **Last Adjustments and Changes:** I made the final adjustments to the code to improve the functionality and appearance of the code and the application.
+
+5. **Z1 branding:** I added branding elements, including Z1 logos and visual identity, bringing a consistent and familiar atmosphere to the application environment.
+
+
+# Learning and Development
+
+This project was a great opportunity to explore mobile app development in React Native outside of the Expo environment. As a self-taught developer in this arena, this was my first project without the use of Expo and a great opportunity to demonstrate and expand my knowledge.
+
+Since August, when I had no knowledge in ReactNative, I have been building my experience through personal projects, which are available in my GitHub repository. Each challenge has been a learning opportunity, and this particular project has allowed me to apply in a practical way everything I have learned so far.
+
+# Device Demonstration
+
+Visual demonstration of the application running on a Pixel 4 device, showing its performance and appearance in a real environment.
+
+https://github.com/sefaca/z1-react-native/assets/32002286/a47534eb-b561-4dd3-8a96-d094638abac1
 
 # Learn More
 
